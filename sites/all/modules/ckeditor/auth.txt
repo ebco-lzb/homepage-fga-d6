@@ -1,0 +1,5 @@
+ require_once '../../../../includes/filemanager.config.php';
+
+        straight below the following line:
+
+        $baseDir = resolveUrl($baseUrl);

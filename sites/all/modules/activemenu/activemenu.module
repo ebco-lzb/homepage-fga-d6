@@ -1,0 +1,182 @@
+<?php
+
+/**
+ * @file
+ * Add AJAX-based tree menu to navigation menu.
+ */
+
+/**
+ * Implementation of hook_init().
+ */
+function activemenu_init() {
+  jstools_modules_includes('activemenu');
+  activemenu_load();
+}
+
+/**
+ * Implementation of hook_menu().
+ */
+function activemenu_menu() {
+  $items = array();
+  
+  $items['admin/settings/activemenu'] = array(
+    'title' => 'Activemenu settings',
+    'description' => 'Specify the menus where enable active menus and how.',
+    'page callback' => 'drupal_get_form',
+    'page arguments' => array('activemenu_admin'),
+    'access arguments' => array('administer activemenu'),
+    'file' => 'activemenu.admin.inc',
+  );
+
+  $items['activemenu/menu'] = array(
+    'title' => 'activemenu',
+    'access arguments' => array('access content'),
+    'type' => MENU_CALLBACK,
+    'page callback' => 'activemenu_js',
+    'page arguments' => array(2),
+  );
+
+  $items = array_merge($items, module_invoke_all('activemenu_menu'));
+  return $items;
+}
+
+/**
+ * Implementation of hook_theme_registry_alter().
+ */
+function activemenu_theme_registry_alter(&$theme_registry) {
+  if (variable_get('activemenu_theme_registry_alter', 0) && isset($theme_registry['menu_item_link'])) {
+    $theme_registry['menu_item_link']['function'] = 'theme_activemenu_menu_item_link';
+  }
+}
+
+/**
+ * Override the menu_item_link theme, which generate the HTML output
+ * for a single menu link.
+ *
+ * This allow to be compatible with menu_firstchild module (and some
+ * other modules which alter the rendered menu).
+ * 
+ * Actually this is the only place we can interfere with menu_tree_output().
+ * It would be preferable (and so much simplier) to deal with
+ * theme_menu_item() but this required information are not passed
+ * to this function...
+ * 
+ * @ingroup themeable
+ */
+function theme_activemenu_menu_item_link($link) {
+  $options = ! empty($link['localized_options']) ? $link['localized_options'] : array();
+  $classes = ! empty($options['attributes']['class']) ? $options['attributes']['class'] : array();
+  $classes[] = 'menu-'. $link['mlid'];
+  $options['attributes']['class'] = implode(' ', $classes);
+
+  return l($link['title'], $link['href'], $options);
+}
+
+/**
+ * Load needed files.
+ */
+function activemenu_load() {
+  static $loaded = FALSE;
+  if (!$loaded) {
+    $settings = variable_get('activemenu_settings', array());
+    $activemenu = module_invoke_all('activemenu', $settings);
+    
+    if (count($activemenu)) {
+      $path = drupal_get_path('module', 'activemenu');
+      jstools_add_js($path . '/activemenu.js');
+      
+      foreach (array_keys(activemenu_get_menu_types()) as $type) {
+        if (! empty($activemenu[$type])) {
+          drupal_add_js(array($type => $activemenu[$type]), 'setting');
+        }
+      }
+
+      activemenu_theme_css();
+    }
+    $loaded = TRUE;
+  }
+}
+
+/**
+ * Menu callback. Output a themed menu tree for a requested menu item.
+ */
+function activemenu_js($mlid = NULL) {
+  if ($mlid) {
+    $item = menu_link_load($mlid);
+  }
+  elseif ($path = activemenu_get_request_path()) {
+    if ($plid = db_result(db_query("SELECT mlid FROM {menu_links} WHERE link_path = '%s'", $path))) {
+      $item = menu_link_load($plid);
+    }
+  }
+  
+  if (isset($item)) {
+    // Retrieve the access checked tree
+    $tree = menu_tree_all_data($item['menu_name'], $item);
+    print drupal_to_js(array('status' => TRUE, 'content' => menu_tree_output($tree)));
+  }
+
+  exit();
+}
+
+/**
+ * Implementation of hook_footer().
+ *
+ * Add a theme-specific css file if needed. Pass Javascript data to the browser.
+ */
+function activemenu_theme_css() {
+  global $custom_theme, $theme, $user;
+ 
+  if (isset($user->theme) && $user->theme != '') {
+    $current_theme = $user->theme;
+  }
+  elseif (!empty($custom_theme)) {
+    $current_theme = $custom_theme;
+  }
+  else {
+    $current_theme = $theme ? $theme : variable_get('theme_default', 'garland');
+  }
+ 
+  $path = drupal_get_path('module', 'activemenu');
+  $file = $path .'/theme/'. $current_theme .'.css';
+  if (file_exists($file)) {
+    drupal_add_css($file);
+  }
+  else {
+    drupal_add_css($path .'/activemenu.css', 'theme');
+  }
+}
+
+/**
+ * Read the incoming request and return the correct path.
+ */
+function activemenu_get_request_path(){
+  global $language;
+
+  // Handle path prefixing.
+  $langcode = '';
+  if (module_exists('locale') && isset($_POST['path'])) {
+    $_GET['q'] = $_POST['path'];
+    // $language_initialize will remove a language prefix from $_GET['q'], if present.
+    if (variable_get('language_count', 1) != 1) {
+      $language = language_initialize();
+    }
+
+    // We can now use the correct path without a prefix.
+    $_POST['path'] = $_GET['q'];
+    $langcode = ($language != language_default()) ? $language->language : '';
+  }
+  return isset($_POST['path']) ? drupal_get_normal_path($_POST['path'], $langcode) : FALSE;
+}
+
+/**
+* @return Array All existing menu types
+*/
+function activemenu_get_menu_types() {
+  return array(
+    'activemenu' => t('Tree menu'),
+    'dropdownmenu' => t('Drop down menu'),
+  );
+}
+
+

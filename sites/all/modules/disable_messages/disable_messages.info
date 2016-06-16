@@ -1,0 +1,13 @@
+name = Disable messages
+description = Add options to filter messages shown to the end users
+core = 6.x
+
+
+
+
+; Information added by drupal.org packaging script on 2013-09-30
+version = "6.x-1.2+0-dev"
+core = "6.x"
+project = "disable_messages"
+datestamp = "1380569620"
+

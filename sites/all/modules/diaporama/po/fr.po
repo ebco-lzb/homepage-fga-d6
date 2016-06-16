@@ -1,0 +1,279 @@
+# $Id: fr.po,v 1.1.4.3 2008/12/27 21:12:28 goz Exp $
+#
+# French translation of Drupal (general)
+# Copyright YEAR NAME <EMAIL@ADDRESS>
+# Generated from files:
+#  diaporama.module,v 1.1.2.7.2.1 2008/10/26 18:44:34 goz
+#  diaporama.info,v 1.1.2.2.2.1 2008/10/26 18:44:34 goz
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PROJECT VERSION\n"
+"POT-Creation-Date: 2008-08-02 19:57+0200\n"
+"PO-Revision-Date: 2008-08-02 20:00+0100\n"
+"Last-Translator: Fabien Clement <fab.clement@gmail.com>\n"
+"Language-Team: French <EMAIL@ADDRESS>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n>1);\n"
+
+#: diaporama.module:26;763;942 diaporama.info:0
+msgid "Diaporama"
+msgstr "Diaporama"
+
+#: diaporama.module:28
+msgid "Diaporama permit to see images in flash animation."
+msgstr "Diaporama permet de visualiser des images dans une animation flash."
+
+#: diaporama.module:138;797
+msgid "Width"
+msgstr "Largeur"
+
+#: diaporama.module:142;801
+msgid "Width (px) of slideshow"
+msgstr "Largeur (en px) du diaporama"
+
+#: diaporama.module:148;807
+msgid "Height"
+msgstr "Hauteur"
+
+#: diaporama.module:152;811
+msgid "Height (px) of slideshow"
+msgstr "Hauteur (en px) du diaporama"
+
+#: diaporama.module:158;817
+msgid "Keep ratio"
+msgstr "Conserver le ratio"
+
+#: diaporama.module:164;823
+msgid "Transition"
+msgstr "Transition"
+
+#: diaporama.module:166;825
+msgid "Transition between images"
+msgstr "Transition entre les images"
+
+#: diaporama.module:167;826
+msgid "Fade"
+msgstr "Fondu"
+
+#: diaporama.module:167;826
+msgid "Slide"
+msgstr "Glisser"
+
+#: diaporama.module:167;826
+msgid "Push"
+msgstr "Pousser"
+
+#: diaporama.module:167;826
+msgid "Pop"
+msgstr "Ecraser"
+
+#: diaporama.module:167;826
+msgid "Warp"
+msgstr "Déformer"
+
+#: diaporama.module:167;826
+msgid "Blur"
+msgstr "Flou"
+
+#: diaporama.module:172;831
+msgid "Speed transition"
+msgstr "Vitesse de transition"
+
+#: diaporama.module:176;835
+msgid "Speed transition in ms"
+msgstr "Vitesse de transition en ms"
+
+#: diaporama.module:182;841
+msgid "Time display"
+msgstr "Délai d'affichage"
+
+#: diaporama.module:186;845
+msgid "Time display in seconds, 0 = infinity"
+msgstr "Délai d'affichage en secondes, 0 = infini"
+
+#: diaporama.module:192;851
+msgid "Show buttons"
+msgstr "Afficher les boutons"
+
+#: diaporama.module:198;857
+msgid "Buttons position"
+msgstr "Position des boutons"
+
+#: diaporama.module:201;220;860;876
+msgid "top"
+msgstr "haut"
+
+#: diaporama.module:202;221;861;877
+msgid "bottom"
+msgstr "bas"
+
+#: diaporama.module:211
+msgid "Show image title"
+msgstr "Afficher le titre des images"
+
+#: diaporama.module:217
+msgid "Title position"
+msgstr "Position du titre"
+
+#: diaporama.module:227;883
+msgid "Random start"
+msgstr "Début aléatoire"
+
+#: diaporama.module:233;889
+msgid "Open image node"
+msgstr "Afficher l'image lors du clic"
+
+#: diaporama.module:240
+msgid "-- none --"
+msgstr "-- vide --"
+
+#: diaporama.module:251
+msgid "Link to galleries"
+msgstr "Lier aux galeries"
+
+#: diaporama.module:252
+msgid "With this option, diaporama will be auto-generated when galleries linked are modified"
+msgstr "Avec cette option, le diaporama sera automatiquement généré quand des galeries liées seront modifiées."
+
+#: diaporama.module:262
+msgid "Select images"
+msgstr "Sélectionner les images"
+
+#: diaporama.module:270
+msgid "Images without galleries"
+msgstr "Images sans galeries"
+
+#: diaporama.module:316;348
+msgid "Thumbnail file image %title {%nid} is missing !"
+msgstr "Le fichier image %title {%nid} est manquant !"
+
+#: diaporama.module:328
+msgid "Empty Gallery"
+msgstr "Galerie vide"
+
+#: diaporama.module:360
+msgid "No images found"
+msgstr "Aucune image trouvée"
+
+#: diaporama.module:394
+msgid "You have to select at least one image or a link to gallerie."
+msgstr "Vous devez sélectionner au moins une image ou lier le diaporama à une galerie."
+
+#: diaporama.module:571
+msgid "Diaporama %nid has been updated."
+msgstr "Le diaporama %nid a été mis à jour."
+
+#: diaporama.module:574
+msgid "Error during diaporama update."
+msgstr "Une erreur est survenue durant la mise à jour du diaporama."
+
+#: diaporama.module:604
+msgid "The file %Imagefile wasn't found. So it wasn't deleted."
+msgstr "Le fichier %Imagefile n'a pas été trouvé. Il n'a donc pas été supprimé."
+
+#: diaporama.module:616
+msgid "File %fs doesn't exist"
+msgstr "Le fichier %fs n'existe pas"
+
+#: diaporama.module:642
+msgid "%rep/%img: creation failed"
+msgstr "%rep/%img: La création a échoué"
+
+#: diaporama.module:652
+msgid "Error during diaporama path creation"
+msgstr "Erreur durant la création du chemin du diaporama."
+
+#: diaporama.module:766
+msgid "Configure diaporama properties."
+msgstr "Configurer les propriétés du diaporama."
+
+#: diaporama.module:792
+msgid "Diaporama settings"
+msgstr "Propriétés de Diaporama"
+
+#: diaporama.module:867
+msgid "Show titles"
+msgstr "Afficher les titres"
+
+#: diaporama.module:873
+msgid "Titles position"
+msgstr "Position des titres"
+
+#: diaporama.module:908
+msgid "Dewslider not found at %dewslider."
+msgstr "Dewslider n'a pas été trouvé dans %dewslider."
+
+#: diaporama.module:909
+msgid "You have to download dewslider on <a href=\"http://www.alsacreations.fr/dewslider\" target=\"_blank\">http://www.alsacreations.fr/dewslider</a> to use diaporama."
+msgstr ""
+"Vous devez télécharger dewslider sur <a "
+"href=\"http://www.alsacreations.fr/dewslider\" "
+"target=\"_blank\">http://www.alsacreations.fr/dewslider</a> pour "
+"utiliser diaporama."
+
+#: diaporama.module:924
+msgid "Management diaporama"
+msgstr "Gestion du diaporama"
+
+#: diaporama.module:927
+msgid "Select images that make up your slideshow."
+msgstr "Sélectionnez les images qui composeront votre diaporama."
+
+#: diaporama.module:991
+msgid "Check all images of the gallery"
+msgstr "Sélectionner toutes les images de la galerie"
+
+#: diaporama.module:1051
+msgid "xml file diaporama_%xml.xml has no images."
+msgstr "Le fichier xml diaporama_%xml.xml ne contient pas d'images."
+
+#: diaporama.module:1056
+msgid "Write in xml file diaporama_%node_nid.xml failed !"
+msgstr "L'écriture du fichier xml diaporama_%node_nid.xml a échoué !"
+
+#: diaporama.module:1066
+msgid "The xml file diaporama_%node_nid.xml has been deleted."
+msgstr "Le fichier xml diaporama_%node_nid.xml a été supprimé."
+
+#: diaporama.module:1068
+msgid "XML file diaporama_%node_nid.xml failed deleting."
+msgstr "La suppression du fichier xml diaporama_%node_nid.xml a échoué."
+
+#: diaporama.module:1071
+msgid "XML file %XMLfile was not found."
+msgstr "Le fichier XML %XMLfile n'a pas été trouvé."
+
+#: diaporama.module:60
+msgid "create diaporama"
+msgstr "Créer un diaporama"
+
+#: diaporama.module:60
+msgid "edit own diaporama"
+msgstr "Editer ses diaporamas"
+
+#: diaporama.module:60
+msgid "access diaporama"
+msgstr "Accès au diaporama"
+
+#: diaporama.module:60
+msgid "administer diaporama"
+msgstr "Administrer les diaporamas"
+
+#: diaporama.module:0
+msgid "diaporama"
+msgstr "diaporama"
+
+#: diaporama.info:0
+msgid "Flash Slideshow. Manage slideshows and see images in friendly flash slideshow."
+msgstr ""
+"Diaporama Flash. Organisez vos diaporamas et visualisez vos images "
+"dans un diaporama flash esthétique."
+
+#: diaporama.info:0
+msgid "Image"
+msgstr "Image"
+

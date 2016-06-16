@@ -1,0 +1,153 @@
+li.activemenu-processed {
+  cursor: pointer;
+  cursor: hand;
+  min-width: 0; /* Harmless hack to give IE7 hasLayout */
+}
+
+li.activemenu-processed ul {
+  cursor: default;
+}
+
+li.activemenu-processed.expanded {
+  background: transparent url(../minus.png) no-repeat 0px .35em;
+}
+
+li.activemenu-processed.collapsed {
+  background: transparent url(../plus.png) no-repeat 0px .35em;
+}
+
+li.activemenu-processed.loading {
+  background: transparent url(../status-active.gif) no-repeat 0px .35em;
+}
+
+li.collapsed ul {
+  display: none;
+}
+
+/* Drop down menu */
+
+.dropdownMenu-container,
+.dropdownMenu-container .dropdownMenu-container ul,
+#header-region .dropdownMenu-container,
+#header-region .dropdownMenu-container ul {
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+  list-style-position: outside;
+  position: relative;
+  line-height: 1.5em;
+  display: block; 
+}
+
+.dropdownMenu-container ul a,
+#header-region .dropdownMenu-container ul a {
+  display: block;
+  padding: 0px 20px 0 5px;
+  border: 1px solid #333;
+  color: #fff;
+  text-decoration: none;
+  background-color: #333;
+  background-repeat: no-repeat;
+  background-position: center right;
+}
+
+.dropdownMenu-container ul a:hover,
+#header-region .dropdownMenu-container ul a:hover {
+  background-color: #fff;
+  color: #333;
+}
+
+.dropdownMenu-container li.leaf a,
+#header-region .dropdownMenu-container li.leaf a,
+.dropdownMenu-container li.dropdownMenu-processed li.leaf a,
+#header-region .dropdownMenu-container li.dropdownMenu-processed li.leaf a {
+  background-image: none;
+}
+
+.dropdownMenu-container li.expanded a,
+.dropdownMenu-container li.collapsed a,
+#header-region .dropdownMenu-container li.expanded a,
+#header-region .dropdownMenu-container li.collapsed a {
+  background-image: url(../arrow_down.png);
+}
+
+li.dropdownMenu-processed li.expanded a,
+li.dropdownMenu-processed li.collapsed a,
+#header-region li.dropdownMenu-processed li.expanded a,
+#header-region li.dropdownMenu-processed li.collapsed a {
+  background-image: url(../arrow_right.png);
+}
+
+.dropdownMenu-container li.expanded.loading a,
+.dropdownMenu-container li.collapsed.loading a,
+.dropdownMenu-container li.dropdownMenu-processed.loading a,
+li.dropdownMenu-processed li.dropdownMenu-processed.loading a,
+#header-region .dropdownMenu-container li.expanded.loading a,
+#header-region .dropdownMenu-container li.collapsed.loading a,
+#header-region .dropdownMenu-container li.dropdownMenu-processed.loading a,
+#header-region li.dropdownMenu-processed li.dropdownMenu-processed.loading a {
+  background-image: url(../status-active.gif);
+}
+
+li.dropdownMenu-processed,
+.dropdownMenu-container li.leaf,
+#header-region li.dropdownMenu-processed,
+#header-region .dropdownMenu-container li.leaf {
+  display: list-item;
+  float: left;
+  position: relative;
+  margin: 0 .3em;
+}
+
+.dropdownMenu-container li.expanded li,
+#header-region .dropdownMenu-container li.expanded li {
+  margin: 0;
+}
+
+.dropdownMenu-container ul ul,
+#header-region .dropdownMenu-container ul ul {
+  position: absolute;
+  z-index: 10;
+  display: none;
+  width: 12em;
+  top: 1.5em;
+}
+
+li.dropdownMenu-processed ul a,
+#header-region li.dropdownMenu-processed ul a {
+  width: 12em;
+  height: auto;
+  float: left;
+}
+
+.dropdownMenu-container ul ul,
+#header-region .dropdownMenu-container ul ul {
+  top: auto;
+}  
+
+.dropdownMenu-container ul li ul ul,
+#header-region .dropdownMenu-container ul li ul ul {
+  left: 12em;
+  margin: 0px 0 0 10px;
+}
+
+.dropdownMenu-container ul li:hover ul ul,
+.dropdownMenu-container ul li:hover ul ul ul,
+.dropdownMenu-container ul li:hover ul ul ul ul,
+#header-region .dropdownMenu-container ul li:hover ul ul,
+#header-region .dropdownMenu-container ul li:hover ul ul ul,
+#header-region .dropdownMenu-container ul li:hover ul ul ul ul {
+  display: none;
+}
+
+.dropdownMenu-container ul li:hover ul,
+.dropdownMenu-container ul li li:hover ul,
+.dropdownMenu-container ul li li li:hover ul,
+.dropdownMenu-container ul li li li li:hover ul
+#header-region .dropdownMenu-container ul li:hover ul,
+#header-region .dropdownMenu-container ul li li:hover ul,
+#header-region .dropdownMenu-container ul li li li:hover ul,
+#header-region .dropdownMenu-container ul li li li li:hover ul {
+  display: block;
+}
+

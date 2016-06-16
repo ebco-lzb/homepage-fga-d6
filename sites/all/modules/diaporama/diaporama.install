@@ -1,0 +1,57 @@
+<?php
+// $Id: diaporama.install,v 1.1.2.3.2.1 2008/10/26 18:44:34 goz Exp $
+
+/**
+ * Implementation of hook_install()
+ **/
+function diaporama_install(){
+	// Create tables
+	drupal_install_schema('diaporama');
+}
+
+/**
+ * Implementation of hook_schema()
+ **/
+function diaporama_schema(){
+	$schema['diaporama'] = array(
+	   'fields' => array(
+	      'vid' 	=> array('type' => 'int', 'unsigned' => TRUE, 'not null' => TRUE, 'default' => '0'),
+	      'nid' 	=> array('type' => 'int', 'unsigned' => TRUE, 'not null' => TRUE, 'default' => '0'),
+          'width'	=> array('type' => 'int', 'unsigned' => TRUE, 'not null' => TRUE),
+          'height'	=> array('type' => 'int', 'unsigned' => TRUE, 'not null' => TRUE),
+          'showbuttons'	=> array('type' => 'int', 'unsigned' => TRUE, 'not null' => TRUE),
+          'showtitles'	=> array('type' => 'int', 'unsigned' => TRUE, 'not null' => TRUE),
+          'randomstart'	=> array('type' => 'int', 'unsigned' => TRUE, 'not null' => TRUE),
+          'timer'	=> array('type' => 'int', 'unsigned' => TRUE, 'not null' => TRUE),
+          'alignbuttons'	=> array('type' => 'varchar', 'length' => 12),
+          'aligntitles'	=> array('type' => 'varchar', 'length' => 12),
+          'transition'	=> array('type' => 'varchar', 'length' => 12, 'not null' => TRUE),
+          'speed'		=> array('type' => 'int', 'unsigned' => TRUE, 'not null' => TRUE),
+          'ratio' 	=> array('type' => 'int', 'unsigned' => TRUE, 'not null' => TRUE, 'default' => '0'),
+          'image_node'=> array('type' => 'int', 'unsigned' => TRUE, 'not null' => TRUE, 'default' => '0'),
+          'tid'		=> array('type' => 'int', 'unsigned' => TRUE, 'not null' => TRUE)
+         ),
+         'indexes'	=> array(
+         	'tid'	=> array('tid')
+         ),
+         'primary key'	=> array('vid','nid'),
+    );
+    
+    return $schema;
+}
+
+/**
+ * Implementation of hook_uninstall()
+ **/
+function diaporama_uninstall(){
+	// Remove tables
+	drupal_uninstall_schema('diaporama');
+	
+	db_query("DELETE FROM {node} WHERE type='diaporama'");
+	db_query("DELETE FROM {term_node} WHERE tid IN (SELECT td.tid FROM {term_data} td INNER JOIN {vocabulary} v ON v.vid=td.vid WHERE v.module='diaporama')");
+	db_query("DELETE FROM {term_data} WHERE vid=(SELECT vid FROM {vocabulary} v WHERE v.module='diaporama')");
+	db_query("DELETE FROM {vocabulary} WHERE module='diaporama'");
+}
+
+
+?>

@@ -1,0 +1,34 @@
+CHANGELOG for Diaporama for Drupal 6
+
+Diaporama 6.x-1.1
+  Bug Fixed:
+    o #333584, #282740: Keep javascript in front of Flash Slideshow
+  
+  New Features:
+    o Add messages and tests for files rights.
+    o Add <hr/> after images selection in diaporama form.
+    o #332525: Diaporama can be linked to a gallery
+    o #332525: Thanks to the cron, diaporama is updated when images are added to gallery.
+
+Diaporama 6.x-1.0
+  Bug Fixed:
+    none
+  New Features:
+    Porting drupal6
+       
+----------------------------------------------------------------------
+Diaporama 6.x-1.1
+  Anomalies corrigées:
+    o #333584, #282740: Le javascript passe devant le diaporama flash
+  
+  Nouvelles fonctionnalités:
+    o Ajoute des messages et test les droits des fichiers
+    o Ajoute une balise <hr /> après l'affichage des miniatures dans le formulaire
+    o #332525: Le diaporama peut etre lie a une galerie photo
+    o #332525: Via le cron, le diaporama est mis à jour si une image est ajoutée à une galerie qui lui est lie.
+
+Diaporama 6.x-1.0
+  Anomalies corrigées:
+    none
+  Nouvelles fonctionnalités:
+    Porting drupal6
