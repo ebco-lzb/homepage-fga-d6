@@ -265,7 +265,12 @@ class date_api_argument_handler extends views_handler_argument_date {
   }
 
   function get_query_fields() {
-    $fields = date_api_fields($this->definition['base']);
+    if (!empty($this->definition['base'])) {
+      $fields = date_api_fields($this->definition['base']);
+    }
+    else {
+      $fields = date_api_fields($this->view->base_table);
+    }
     $fields = $fields['name'];
     $min_date = isset($this->min_date) ? $this->min_date : NULL;
     $min_utc = isset($this->min_utc) ? $this->min_utc : NULL;
@@ -306,6 +311,7 @@ class date_api_argument_handler extends views_handler_argument_date {
    * The argument sent may be found at $this->argument.
    */
   function query() {
+    $this->ensure_my_table();
     $block_identifier = date_block_identifier($this->view);
     if (!empty($this->view->block_identifier) || isset($_GET[$block_identifier])) {
       // Retrieve the block arguments in a way that will work for
@@ -372,7 +378,7 @@ class date_api_argument_handler extends views_handler_argument_date {
       foreach ($this->query_fields as $query_field) {
         $field = $query_field['field'];
         if ($field['table_name'] != $this->table || !empty($this->relationship)) {
-          $this->related_table_alias = $this->query->queue_table($field['table_name'], $this->relationship);
+          $this->related_table_alias = $this->query->ensure_table($field['table_name'], $this->relationship);
         }
         $date_handler = $query_field['date_handler'];
         $table_alias = !empty($this->related_table_alias) ? $this->related_table_alias : $field['table_name'];
